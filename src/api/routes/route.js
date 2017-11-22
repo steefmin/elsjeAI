@@ -1,9 +1,9 @@
 'use strict'
-module.exports = function (app) {
-  var action = require('../controllers/controller')
+let router = require('express').Router()
 
-  // application Routes
-  app.post('/list', action.list)
+let action = require('../controllers/controller')
 
-  app.get('/', action.home)
-}
+router.post('/list', action.list)
+router.get('/', action.home)
+
+module.exports = router
