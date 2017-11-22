@@ -9,8 +9,8 @@ var mongoose = require('mongoose'),
 */
 
 module.exports.list = function (req, res) {
-  let userid = functions.verifyUserName(req.result.parameters.any) || 'all'
-  let channelid = functions.verifyChannelName(req.result.parameters.any) || 'all'
+  let userid = isDefined(req.results.parameters.any) ? functions.verifyUserName(req.result.parameters.any) || 'all' : 'all'
+  let channelid = isDefined(req.results.parameters.any) ? functions.verifyChannelName(req.result.parameters.any) || 'all' : 'all'
   taskapi.showAllTasks(function (err, tasks) {
     if (!err) {
       let usertasks = functions.filterTasks('channelid', functions.filterTasks('responsibleid', tasks, userid), channelid)
@@ -20,6 +20,8 @@ module.exports.list = function (req, res) {
         speech: formated,
         displayText: formated
       })
+    } else {
+      console.log('taskapi error!')
     }
   })
 }
@@ -27,4 +29,8 @@ module.exports.list = function (req, res) {
 module.exports.home = function (req, res) {
   res.send('testing!!!')
 //  res.json({text: 'test'})
+}
+
+function isDefined (obj) {
+  return typeof obj !== 'undefined'
 }

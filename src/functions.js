@@ -16,6 +16,16 @@ exports.verifyChannelName = function (input) {
   return channelid
 }
 
+exports.filterTasks = function (filterOn, tasks, filterFor) {
+  if (filterFor === 'all') {
+    return tasks
+  } else {
+    return tasks.filter(function (val) {
+      return val[filterOn] === filterFor
+    })
+  }
+}
+
 exports.sortTasks = function (tasks, sortBy) {
   var sorted = tasks.sort(function (taska, taskb) {
     if (taska[sortBy] < taskb[sortBy]) {
