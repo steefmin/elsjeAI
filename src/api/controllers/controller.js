@@ -25,5 +25,6 @@ exports.list = function (req, res) {
 }
 
 exports.home = function (req, res) {
-  res.json({text: 'test'})
+  res.send('testing!!!')
+//  res.json({text: 'test'})
 }

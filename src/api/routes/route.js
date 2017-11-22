@@ -2,7 +2,7 @@
 module.exports = function (app) {
   var action = require('../controllers/controller')
 
-  // todoList Routes
+  // application Routes
   app.post('/list', action.list)
 
   app.get('/', action.home)
