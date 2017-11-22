@@ -11,15 +11,17 @@ var mongoose = require('mongoose'),
 exports.list = function (req, res) {
   let userid = functions.verifyUserName(req.result.parameters.any) || 'all'
   let channelid = functions.verifyChannelName(req.result.parameters.any) || 'all'
-  taskapi.showAllTasks(function (err, tasks){
-    let usertasks = functions.filterTasks('channelid', functions.filterTasks('responsibleid', tasks, userName), channelName)
-    let sorted = functions.sortTasks(functions.sortTasks(usertasks, 'deadline'), 'channelid')
-    let formated = functions.formatTasks(sorted)
-    res.json({
-      speech: formated,
-      displayText: formated
-    })
-  }
+  taskapi.showAllTasks(function (err, tasks) {
+    if (!err) {
+      let usertasks = functions.filterTasks('channelid', functions.filterTasks('responsibleid', tasks, userid), channelid)
+      let sorted = functions.sortTasks(functions.sortTasks(usertasks, 'deadline'), 'channelid')
+      let formated = functions.formatTasks(sorted)
+      res.json({
+        speech: formated,
+        displayText: formated
+      })
+    }
+  })
 }
 
 exports.home = function (req, res) {
