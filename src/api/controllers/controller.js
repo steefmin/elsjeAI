@@ -9,8 +9,14 @@ var mongoose = require('mongoose'),
 */
 
 module.exports.list = function (req, res) {
-  let userid = isDefined(req.results.parameters.any) ? functions.verifyUserName(req.result.parameters.any) || 'all' : 'all'
-  let channelid = isDefined(req.results.parameters.any) ? functions.verifyChannelName(req.result.parameters.any) || 'all' : 'all'
+  let userid, channelid
+  if (isDefined(req.results)) {
+    userid = isDefined(req.results.parameters.any) ? functions.verifyUserName(req.result.parameters.any) || 'all' : 'all'
+    channelid = isDefined(req.results.parameters.any) ? functions.verifyChannelName(req.result.parameters.any) || 'all' : 'all'
+  } else {
+    userid = 'all'
+    channelid = 'all'
+  }
   taskapi.showAllTasks(function (err, tasks) {
     if (!err) {
       let usertasks = functions.filterTasks('channelid', functions.filterTasks('responsibleid', tasks, userid), channelid)
