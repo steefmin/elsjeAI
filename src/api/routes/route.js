@@ -3,9 +3,7 @@ module.exports = function (app) {
   var action = require('../controllers/controller')
 
   // todoList Routes
-  app.route('/list')
-    .post(action.list)
+  app.post('/list', action.list)
 
-  app.route('/')
-    .get(action.home)
+  app.get('/', action.home)
 }
