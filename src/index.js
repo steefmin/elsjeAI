@@ -169,7 +169,7 @@ function replyWithData (bot, message, responseData) {
 
 let app = express()
 let port = process.env.PORT || 5000
-let route = require('api/routes/route')
+let route = require('./api/routes/route')
 
 app.use('/', route)
 
