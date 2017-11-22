@@ -5,4 +5,7 @@ module.exports = function (app) {
   // todoList Routes
   app.route('/list')
     .post(action.list)
+
+  app.route('/')
+    .get(action.home)
 }
