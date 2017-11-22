@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
   Task = mongoose.model('Tasks');
 */
 
-exports.list = function (req, res) {
+module.exports.list = function (req, res) {
   let userid = functions.verifyUserName(req.result.parameters.any) || 'all'
   let channelid = functions.verifyChannelName(req.result.parameters.any) || 'all'
   taskapi.showAllTasks(function (err, tasks) {
@@ -24,7 +24,7 @@ exports.list = function (req, res) {
   })
 }
 
-exports.home = function (req, res) {
+module.exports.home = function (req, res) {
   res.send('testing!!!')
 //  res.json({text: 'test'})
 }
