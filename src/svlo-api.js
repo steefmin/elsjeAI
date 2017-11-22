@@ -33,11 +33,15 @@ var completeTask = function (taskid, cb) {
 var showAllTasks = function (cb) {
   var options = newRequestStructure()
   getTasks(options, function (err, tasks) {
-    var goodtasks = tasks.map(function (task) {
-      task.deadline = task.deadline.substr(0, 10)
-      return task
-    })
-    cb(err, goodtasks)
+    if (!err) {
+      var goodtasks = tasks.map(function (task) {
+        task.deadline = task.deadline.substr(0, 10)
+        return task
+      })
+      cb(null, goodtasks)
+    } else {
+      cb(err, null)
+    }
   })
 }
 
