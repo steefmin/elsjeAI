@@ -1,0 +1,17 @@
+{
+  "name": "Elsje bot based on API.AI with Slack integration",
+  "description": "Elsje slack todo bot with API.ai integration",
+  "repository": "https://github.com/steefmin/elsjeAI",
+  "logo": "",
+  "keywords": ["elsje", "api.ai", "slack", "natural language"],
+  "env": {
+    "accesstoken": {
+      "description": "Client access token for Api.ai",
+      "value": ""
+    },
+    "slackkey": {
+      "description": "Slack bot user API token",
+      "value": ""
+    }
+  }
+}
