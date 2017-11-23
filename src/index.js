@@ -83,7 +83,7 @@ function isDefined (obj) {
   return obj != null
 }
 
-controller.hears(['.*'], ['direct_message', 'direct_mention', 'mention', 'ambient'], (bot, message) => {
+controller.hears(['.*'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
   try {
     if (message.type === 'message') {
       if (message.user === bot.identity.id) {

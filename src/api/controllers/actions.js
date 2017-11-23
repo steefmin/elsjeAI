@@ -12,8 +12,7 @@ exports.list = function (req, res) {
       let sorted = functions.sortTasks(functions.sortTasks(usertasks, 'deadline'), 'channelid')
       let formated = functions.formatTasks(sorted)
       res.json({
-        speech: formated,
-        displayText: formated
+        speech: formated
       })
     } else {
       console.log('taskapi error!')
