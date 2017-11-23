@@ -99,7 +99,9 @@ controller.hears(['.*'], ['direct_message', 'direct_mention', 'mention'], (bot, 
         let botId = '<@' + bot.identity.id + '>'
         let userId = message.user
 
+        console.log('requestText:')
         console.log(requestText)
+        console.log('messageType:')
         console.log(messageType)
 
         if (requestText.indexOf(botId) > -1) {
@@ -110,7 +112,7 @@ controller.hears(['.*'], ['direct_message', 'direct_mention', 'mention'], (bot, 
           sessionIds.set(channel, uuid.v1())
         }
 
-        console.log('Start request ', requestText)
+        console.log('Start request to APIAI', requestText)
         let request = apiAiService.textRequest(requestText,
           {
             sessionId: sessionIds.get(channel),
@@ -128,6 +130,7 @@ controller.hears(['.*'], ['direct_message', 'direct_mention', 'mention'], (bot, 
         )
 
         request.on('response', (response) => {
+          console.log('From APIai to Slack response:')
           console.log(response)
 
           if (isDefined(response.result)) {
