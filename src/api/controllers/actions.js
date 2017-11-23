@@ -3,7 +3,7 @@
 let functions = require('../../functions')
 let taskapi = require('../../svlo-api.js')
 
-exports.list = function (req {
+exports.list = function (req) {
   let userid = functions.verifyUserName(req.result.parameters.any) || 'all'
   let channelid = functions.verifyChannelName(req.result.parameters.any) || 'all'
   taskapi.showAllTasks(function (err, tasks) {
