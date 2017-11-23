@@ -3,11 +3,6 @@
 let action = require('./actions')
 
 module.exports.type = function (req, res) {
-  console.log('this is the request:')
-  console.log(req)
-  console.log('this is the POST body:')
-  console.log(req.body)
-
   switch (req.body.result.action) {
     case 'list':
       action.list(req, res)
