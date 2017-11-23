@@ -12,7 +12,10 @@ exports.list = function (req, res) {
       let sorted = functions.sortTasks(functions.sortTasks(usertasks, 'deadline'), 'channelid')
       let formated = functions.formatTasks(sorted)
       res.json({
-        speech: formated
+        speech: 'only works on slack',
+        data: {
+          slack: formated
+        }
       })
     } else {
       console.log('taskapi error!')
