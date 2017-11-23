@@ -15,6 +15,7 @@
     "botkit": "0.0.12",
     "html-entities": "^1.2.0",
     "node-uuid": "^1.4.7",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "body-parser": "1.18.2"
   }
 }

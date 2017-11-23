@@ -172,7 +172,13 @@ function replyWithData (bot, message, responseData) {
 
 let app = express()
 let port = process.env.PORT || 5000
+let bodyParser = require('body-parser')
 let route = require('./api/routes/route')
+
+app.use(bodyParser.json({
+  type: 'application/json',
+  limit: '500kb'
+}))
 
 app.use('/', route)
 
