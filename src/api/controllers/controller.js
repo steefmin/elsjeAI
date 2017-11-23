@@ -3,7 +3,7 @@
 let action = require('./actions')
 
 module.exports.type = function (req, res) {
-  console.log(req.result.action)
+  console.log(req)
   switch (req.result.action) {
     case 'list':
       action.list(req, res)
