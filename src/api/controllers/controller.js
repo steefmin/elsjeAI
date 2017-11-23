@@ -2,12 +2,8 @@
 
 let action = require('./actions')
 
-/*
-var mongoose = require('mongoose'),
-  Task = mongoose.model('Tasks');
-*/
-
 module.exports.type = function (req, res) {
+  console.log(req.result.action)
   switch (req.result.action) {
     case 'list':
       action.list(req, res)
