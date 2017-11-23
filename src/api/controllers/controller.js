@@ -3,18 +3,14 @@
 let action = require('./actions')
 
 module.exports.type = function (req, res) {
-  let message
   console.log(req.body)
   switch (req.body.result.action) {
     case 'list':
-      message = action.list(req)
+      action.list(req, res)
       break
     default:
-      message = 'ik snap er geen bal van!'
+      res.json({speech: 'ik snap er geen bal van!'})
   }
-  res.json({
-    speech: message
-  })
 }
 
 module.exports.home = function (req, res) {
