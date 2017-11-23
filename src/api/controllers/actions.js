@@ -4,8 +4,8 @@ let functions = require('../../functions')
 let taskapi = require('../../svlo-api.js')
 
 exports.list = function (req, res) {
-  let userid = functions.verifyUserName(req.result.parameters.any) || 'all'
-  let channelid = functions.verifyChannelName(req.result.parameters.any) || 'all'
+  let userid = functions.verifyUserName(req.result.body.parameters.any) || 'all'
+  let channelid = functions.verifyChannelName(req.result.body.parameters.any) || 'all'
   taskapi.showAllTasks(function (err, tasks) {
     if (!err) {
       let usertasks = functions.filterTasks('channelid', functions.filterTasks('responsibleid', tasks, userid), channelid)
